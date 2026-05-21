@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Async Await</h1>
+    <input type="text" id="username" placeholder="enter your name"><br><br>
+    <input type="password" name="pass" id="pass" placeholder="enter your password"><br><br>
+    <button onclick="handle()">Login</button>
+
+    <script>
+
+        const loginPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ login: true, name: "aishaker" })
+            }, 2000)
+        });
+
+        const tokenPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ token: "123dxfnjkghdfvfdvdnf" })
+            }, 3000)
+        });
+
+        async function handleLoginPromise() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('pass').value;
+
+            const result = await loginPromise;
+            const tokenResult = await tokenPromise;
+            if (username === result.name && password === "1234") {
+                console.log(result, tokenResult);
+                alert("username: " + result.name + "\n" + "token: " + tokenResult.token);
+            } else {
+                alert("Cradentials mismatch");
+            }
+
+        }
+
+        function handle() {
+            
+            handleLoginPromise();
+        }
+
+
+    </script>
+</body>
+
+</html>
