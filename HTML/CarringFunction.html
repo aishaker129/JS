@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Caring Function in JavaScript
+    </h1>
+
+    <button onclick="display(30)">Show Result</button>
+
+
+    <script>
+        //  function add(a){
+        //     return function(b){
+        //         return function(c){
+        //             return a + b + c;
+        //         }
+        //     }
+        // }
+
+        // console.log(add(10)(20)(30));
+
+        // function mul(a){
+        //     return function(b){
+        //         return a * b;
+        //     }
+        // }
+
+        // let out = mul(2);
+        // function display(b){
+        //     console.log(out(b));
+        // }
+
+        function logs(level){
+            return function(msg){
+                return "info: "+level + " Message: "+msg;
+            }
+        }
+
+        console.log(logs("LogIn")("User logged In successfully"));
+        
+        
+    </script>
+</body>
+</html>

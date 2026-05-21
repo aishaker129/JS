@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function handleBlur(event){
+            ev = event.target;
+            if(ev.id === "inputAge"){
+                if(ev.value < 18 && ev.value.length > 0){
+                    document.getElementById('ageValidationMessage').innerText = "Age must be heigher than 18";
+                    document.getElementById('ageValidationMessage').style.color = "red";
+                }
+                else if(ev.value == 0){
+                    document.getElementById('ageValidationMessage').innerText = "";
+                    document.getElementById('age').innerText = "";
+                }
+                else{
+                    document.getElementById('ageValidationMessage').innerText = "";
+                    document.getElementById('age').innerText = "Age is "+ev.value;
+                }
+            }
+
+            if(ev.id === "inputName"){
+                if((ev.value.length < 3 || ev.value.length > 12) && ev.value.length != 0){
+                    document.getElementById('nameValidationMessage').innerText = "Name must be 3 to 12 character.";
+                    document.getElementById('nameValidationMessage').style.color = "red";
+                }
+                else if(ev.value.length < 1){
+                    document.getElementById('nameValidationMessage').innerText = "";
+                    document.getElementById('name').innerText = "";
+                }
+                else{
+                    document.getElementById('nameValidationMessage').innerText = "";
+                    document.getElementById('name').innerText = "Name is "+ev.value;
+                }
+            }
+
+            if(ev.id === "inputEmail"){
+                let email = ev.value;
+
+                let f = false;
+                for (const ch of email) {
+                    if(ch == '@'){
+                        f = true;
+                        break;
+                    }
+                }
+
+                if(!f && ev.value.length > 0){
+                    document.getElementById('emailValidationMessage').innerText = "Invalid email formate.";
+                    document.getElementById('emailValidationMessage').style.color = "red";
+                }
+                else if(ev.value.length < 1){
+                    document.getElementById('emailValidationMessage').innerText = "";
+                    document.getElementById('email').innerText = "";
+                }
+                else{
+                    document.getElementById('emailValidationMessage').innerText = "";
+                    document.getElementById('email').innerText = "Email is "+ev.value;
+                }
+            }
+        }
+    
+        function ok(){
+            let name = document.getElementById('inputName').value;
+            let age = document.getElementById('inputAge').value;
+            let email = document.getElementById('inputEmail').value;
+
+            document.getElementById('name').innerText = "Name is "+name
+            document.getElementById('name').style.color = "green";
+            document.getElementById('age').innerText = "Age is "+age;
+            document.getElementById('age').style.color = "green";
+            document.getElementById('email').innerText = "Email is "+email;
+            document.getElementById('email').style.color = "green";
+        }
+    </script>
+</head>
+<body>
+    <div class="info">
+        <h1 id="name"></h1>
+        <h2 id="age"></h2>
+        <h2 id="email"></h2>
+        
+        
+    </div>
+    <form action="#">
+        <div class="section1">
+            <input type="text" id="inputName" onblur="handleBlur(event)" placeholder="enter name"><br>
+            <span id="nameValidationMessage"></span>
+        </div>
+        <div class="ageSection">
+            <input type="text" id="inputAge" onblur="handleBlur(event)" placeholder="enter age"><br>
+            <span id="ageValidationMessage"></span>
+        </div>
+        <div class="genderSection">
+            <input type="text" id="inputEmail" onblur="handleBlur(event)" placeholder="enter email"><br>
+            <span id="emailValidationMessage"></span>
+        </div>
+
+        <div class="send">
+            <button onclick="ok()">OK</button>
+        </div>
+        
+        
+    </form>
+</body>
+</html>

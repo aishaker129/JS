@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Promise in JavaScript</h1>
+
+    <form action="#">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email"><br><br>
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass" placeholder="Enter your password"><br><br>
+        <input type="submit" onclick="handleLogin()" value="Login">
+    </form>
+
+    <script>
+        // let a = 20;
+        // let b = 40;
+        // let c = 30;
+        // const promise = new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         let d = a + b + c;
+        //         resolve("Code executed output is: "+d);
+        //     },3000)
+        // })
+
+        // promise.then((result)=>{
+        //     console.log(result);
+            
+        // });
+
+        function userLogin(){
+            let email = "aishaker@test.com";
+            let pass = "aishaker";
+
+            let emailRequest = document.getElementById('email').value;
+            let password = document.getElementById('pass').value;
+            // console.log("email: "+ emailRequest + " password: "+password);
+            return loginPromise = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve({login:false,id:1});
+                    // if(email == emailRequest && pass == password){
+                    //     reject({login:true,id:1});
+                    // }else{
+                    //     reject({login:false,id:1});
+                    // }
+                },3000)
+            })
+
+        }
+
+        function userToken(){
+            return tokenPromise = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    // resolve("#AJDJDFHHGRUJFNDFJKDJEIRUHV!@");
+                    reject({token:"error"})
+                },1000)
+            });
+        }
+
+        function handleLogin(){
+            const loginPromise = userLogin();
+            const tokenPromise = userToken();
+
+            Promise.all([loginPromise,tokenPromise]).then((result)=>{
+                console.log(result);
+                
+                if(result.login){
+                    alert("Logged In, Go to Dashboard.");
+                }else{
+                    alert("Try again.");
+                }
+            }).catch((error)=>{
+                console.log(error);
+            })
+
+            // Promise.all([loginPromise,tokenPromise]).then((result)=>{
+            //     console.log(result);
+            // })
+
+            //  Promise.allSettled([loginPromise,tokenPromise]).then((result)=>{
+            //     console.log(result);
+            // })
+
+            // Promise.race([loginPromise,tokenPromise]).then((result)=>{
+            //     console.log(result);
+            // })
+
+            // loginPromise.then((result)=>{
+            //     console.log(result);
+                
+            //     if(result.login){
+            //         alert("Logged In, Go to Dashboard.");
+            //     }else{
+            //         alert("Try again.");
+            //     }
+            // }).catch((error)=>{
+            //     console.log(error);
+            // })
+            
+        }
+
+    </script>
+</body>
+</html>

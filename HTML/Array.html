@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <h1>Array in JavaScript</h1>
+
+    <!-- add element in array -->
+    <span>Add Element: </span>
+    <input type="text" id="pos" placeholder="enter position">
+    <input type="text" onblur="addElement(event)" placeholder="enter array element">
+    <br>
+    <span>Delete array element: </span>
+    <input type="text" onblur="deleteElement(event)" placeholder="enter array delete element position.">
+    <br>
+    <button onclick="ok()">ok</button>
+
+    <ol id="list">
+
+    </ol>
+
+
+
+
+    <script>
+        let arr = new Array("Ai","Shaker","Mahfuz","Rifat");
+
+        function addElement(event){
+            let pos = document.getElementById('pos').value;
+            if(pos > arr.length){
+                alert("invalid position, array length is: "+arr.length)
+            }
+            let element = event.target.value;
+            if(element== null){
+                alert("must provide array element.");
+            }
+            else{
+                arr.splice(pos,0,element);
+                alert("Array element add successfully, value: "+element);  
+            }
+        }
+
+        function deleteElement(event){
+            let pos = event.target.value;
+            if(pos > arr.length-1){
+                alert("Please enter valid position. Array length is: "+arr.length);
+                return;
+            }
+            arr.splice(pos,1);
+            alert("array element deleted successfully whih position: "+pos);
+            console.log(arr);
+            
+        }
+
+        function ok(){
+            
+            list = document.getElementById('list');
+            list.innerHTML = "";
+
+            for(let user of arr){
+                list.innerHTML += "<li>"+user+"</li>"
+            }
+
+            console.log(arr);
+            
+        }
+        
+    </script>
+</body>
+</html>

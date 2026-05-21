@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Function Declaration</h1>
+
+    <script>
+
+        /// function declaration
+        // name("Ai","Shaker","mahfuz","Rifat","Ali"); // arguments object
+        // function name(...name){ // rest parameter
+        //     console.log(name[0]);
+        // }
+
+        // function name(name,b,c,f,g){
+        //     console.log(name[0]);
+        // }
+        // console.log(name.length);
+
+
+        // console.log(typeof name);
+        // console.log(name instanceof Object);
+        
+        /// function expression
+
+        // let functionExpresion = function fruit(...val){
+        //     console.log(val.length);
+        // }
+
+        // functionExpresion(20,30,40,50)
+
+        /// anonymous function
+
+        // const add = function(a,b){
+        //     return a + b;
+        // }
+
+        // const sub = function(a,b){
+        //     return a - b;
+        // }
+
+        // const mul = function(a , b){
+        //     return a * b;
+        // }
+
+        // const div = function(a,b){
+        //     return a / b;
+        // }
+
+        // const onTime = function(){
+        //     console.log("Set on time called");
+            
+        // }
+
+        // function operation(fun){
+        //     let x = 30;
+        //     let y = 6;
+        //     console.log(fun(x,y));
+        // }
+
+        // setTimeout(onTime,3000);
+        // operation(add);
+        // operation(sub);
+        // operation(mul);
+        // operation(div);
+
+        /// arrow function
+
+        // const add = (a,b)=>{
+        //     if(typeof a=="number" && typeof b=="number"){
+        //         return a + b;
+        //     }else{
+        //         return " provide valid number";
+        //     }
+        // }
+        // const add=()=> 2 + 2;
+
+        // console.log(add("200",300));
+
+        // const squre= num => num * num;
+        // console.log(squre(30));
+        
+        
+        // const user = ()=>({name:'Ai shaker',age:24,email:'aishaker@test.com'});
+        // console.log(user());
+
+        // function getAll(){
+        //     console.log(arguments);
+            
+        // }
+
+        // const getAll = ()=>{
+        //     console.log(arguments);// arrow function does not work arguments
+            
+        // }
+
+        // getAll('Ai Shaker','rifat','mahfuz');
+
+
+        /// Immediately Invoked Function Expression (IIEF)
+
+        // (function(){
+        //     let name = "Ai Shaker";
+        //     console.log(name);
+        // })()
+
+        // (function(name){
+        //     console.log(name);
+        // })("Mahfuz Mia")
+
+        // (()=>{
+        //     var fruite = "Apple";
+        //     console.log(fruite);
+        // })()
+
+        // ((color)=>{
+        //     var fruite = "Apple";
+        //     console.log(fruite, color);
+        // })("Yellow")
+
+        // const store = (()=>{
+        //     return 2 * 5;
+        // })();
+
+        // console.log(store);
+
+        // const counter = (()=>{
+        //     var count = 0;
+
+        //     return {
+        //         increment: function(){
+        //             count++;
+        //             console.log(count);
+        //         },
+        //         decrement: function(){
+        //             count--;
+        //             console.log(count);
+        //         }
+        //     }
+        // })();
+
+        // counter.increment();
+        // counter.increment();
+        // counter.increment();
+        // counter.decrement();
+        // counter.decrement();
+
+        // console.log(counter.count); // count is private we can't access this outside;
+        // console.log(count);
+        
+        
+        /// callback function
+
+        // function greet(name,callBack){
+        //     console.log("Hello", name);
+        //     callBack(name);
+            
+        // }
+
+        // function bay(userName){
+        //     console.log("Good bay!!", userName);
+        // }
+
+        // greet("Shaker",bay);
+        // greet("Shaker",function(userName){
+        //     console.log("Good Bay", userName);
+            
+        // });
+
+        // function callBack(){
+        //     console.log("Hello");
+            
+        // }
+
+        // setTimeout(callBack,2000);
+
+        // function callBack(item){
+        //     console.log(item);
+            
+        // }
+        // let data = ["Shaker","Mahfuz","Rifat","Ali"];
+
+        // data.forEach(callBack)
+
+        function makeAPI(callBack){
+            setTimeout(()=>{
+                const user ={
+                    name: "Ai Shaker",
+                    age: 24
+                }
+                callBack(user)
+            },2000)
+            
+        }
+
+        function handleAPI(data){
+            console.log(data);
+            
+        }
+
+        makeAPI(handleAPI)
+    </script>
+</body>
+</html>

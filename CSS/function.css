@@ -1,0 +1,31 @@
+h1{
+    color:black;
+    margin-top: 50px;
+    margin-left: 40%;
+}
+
+.main{
+    background-color: brown;
+    margin-left: 35%;
+    height: 100px;
+    width: 300px;
+    text-align: center;
+}
+
+.main h2{
+    margin-top: 10px;
+    padding-top: 10px;
+    color: aliceblue;
+}
+
+.button{
+    width: 280px;
+    /* background-color: aqua; */
+    margin-left: 10px;
+    
+}
+
+button{
+    width: 80px;
+    height: 30px;
+}

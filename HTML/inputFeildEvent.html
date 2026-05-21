@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function handleinput(event){
+            console.log(event.target.value);
+            // if(event.target.id="age" && event.target.value <18){
+            //     alert("You must be at least 18 years old");
+            // }
+        }
+        function handleKeyUp(){
+            console.log("Stop keyup event");
+        }
+        function handleKeyDown(){
+            console.log("Start writing...");
+        }
+        function handleFocus(){
+            console.log("Input field is focused");
+        }
+        function handleBlur(event){
+            console.log("Input field is blurred");
+            if(event.target.id === "age" && event.target.value < 18) {
+                alert("You must be at least 18 years old");
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Input Field Events</h1>
+    <input type="text" 
+    oninput="handleinput(event)"
+    onkeyup="handleKeyUp()"
+    onkeydown="handleKeyDown()"
+    onfocus="handleFocus()"
+    onblur="handleBlur(event)"
+    placeholder="enter name">
+
+    <input type="text" oninput="handleinput(event)" onblur="handleBlur(event)" id="age" placeholder="enter email">
+    <input type="text" oninput="handleinput(event)" id="email" placeholder="enter age">
+</body>
+</html>

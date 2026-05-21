@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Array of object</h1>
+
+    <button onclick="show()">Show Data</button>
+
+    <ul id="user-list">
+
+    </ul>
+
+    <script>
+        let users = [
+            { name: 'Ai shaker', age: 24, email: 'aishaker@test.com' },
+            { name: 'shaker', age: 25, email: 'shaker@test.com' },
+            { name: 'mahfuz', age: 27, email: 'mahfuz@test.com' }
+        ];
+
+        function show() {
+            let list = document.getElementById('user-list');
+            list.innerHTML = "";
+
+            // one way
+            // for (let user of users) {
+
+            //     let html = "<ol>";
+
+            //     for (let key in user) {
+            //         html += `<li>${user[key]}</li>`;
+            //     }
+
+            //     html += "</ol>";
+
+            //     list.innerHTML += html;
+            // }
+
+            // another way using map function
+            // users.map(user => {
+            //     let html = "<ol>";
+
+            //     for (let key in user) {
+            //         html += `<li>${user[key]}</li>`;
+            //     }
+
+            //     html += "</ol>";
+
+            //     list.innerHTML += html;
+            // });
+
+            // also we can use forEach function to show data
+            users.forEach(user => {
+                let html = "<ol>";
+
+                for (let key in user) {
+                    html += `<li>${user[key]}</li>`;
+                }
+
+                html += "</ol>";
+
+                list.innerHTML += html;
+            });
+        }
+
+    </script>
+</body>
+
+</html>

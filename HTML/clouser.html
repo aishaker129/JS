@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Clouser in JavaScript</h1>
+
+    <h2 id="show"></h2>
+    <button onclick="c.increment()">Increment</button>
+    <button onclick="c.decrement()">Decrement</button>
+ 
+    <script>
+        function counter(){
+            let count = 0;
+            let show = document.getElementById("show");
+            return{
+                increment:function(){
+                    count++;
+                    show.textContent = count;
+                    return count;
+                },
+                decrement:function(){
+                    count--;
+                    show.textContent = count;
+                    return count;
+                }
+            }
+        }
+        let c = counter();
+
+    </script>
+</body>
+</html>

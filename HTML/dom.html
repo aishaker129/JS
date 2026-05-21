@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getValue(){
+            let name = document.getElementById("name").value;
+            // alert("Hello " + name);
+            document.getElementById("info").innerText = name;
+        }
+
+        function setValue(){
+            let value = "Ai Shaker";
+            document.getElementById("name").value = value;
+        }
+
+        function removeValue(){
+            document.getElementById("name").value = "";
+        }
+
+        function copyValue(){
+            let name = document.getElementById("other").value;
+            document.getElementById("name").value = name;
+        }
+    </script>
+</head>
+<body>
+    
+    <h1 id="info"></h1>
+
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="text" id="other" placeholder="Enter other name">
+    <button onclick="getValue()">Get Value</button>
+    <button onclick="setValue()">setVlue</button>
+    <button onclick="removeValue()">remove Value</button>
+    <button onclick="copyValue()">Copy Value</button>
+</body>
+</html>

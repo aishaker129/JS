@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object in JS</title>
+</head>
+<body>
+    <h1>Object using JavaScript</h1>
+    <input type="text" id="key" placeholder="enter key">
+    <input type="text" id="value" placeholder="enter value">
+    <button onclick="addValue()">add element</button><br>
+    <input type="text" id="keys" placeholder="enter key">
+    <button onclick="deleteElement()">delete element</button><br>
+
+    <button onclick="showObject()">Display data</button>
+
+    <ol id="ol">
+
+    </ol>
+
+
+
+    <script>
+        // let data = {
+        //     name:'Ai Shaker',
+        //     age: 24,
+        //     email:'aishaker@test.com',
+        //     address:{
+        //         houseNo: 19,
+        //         roadNo: 1,
+        //         block: 'G',
+        //         sector: 'Mirpur 2',
+        //         city: 'Dhaka'
+        //     },
+        //     greet:function(){
+        //         return "Hello "+this.name+", how are you?";
+        //     },
+        //     hello:function(val){
+        //         return this.greet()+" this is "+val;
+        //     }
+
+        // }
+
+        // console.log(data.hello("mahfuz"));
+
+        let userDetails = {
+            name: "Ai Shaker",
+            age: 24,
+            email: "aishaker@test.com"
+        };
+
+        function showObject(){
+            let element = document.getElementById('ol');
+            element.innerHTML = "";
+
+            for(let key in userDetails){
+                element.innerHTML += "<li>"+key+" is "+userDetails[key]+"</li>";
+            }
+        }
+
+        function addValue(){
+            let key = document.getElementById('key').value;
+            let value = document.getElementById('value').value;
+
+            userDetails[key] = value;
+            showObject();
+        }
+
+        function deleteElement(){
+            let key = document.getElementById('keys').value;
+
+            
+            delete userDetails[key];
+            showObject();
+        }
+        
+    </script>
+</body>
+</html>
