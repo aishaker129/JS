@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind in JS</title>
+</head>
+<body>
+    <h1>Bind in JS</h1>
+
+    <script>
+        const obj = {
+            name:"Shaker",
+            age:24,
+            showDetails:function(){
+                console.log("my name is "+this.name+" and my age is "+this.age);
+                
+            }
+        }
+        const admin={
+            name:"Mahfuz Mia",
+            age: 26
+        }
+        const student={
+            name:"Sakib",
+            age: 22
+        }
+
+        const newObject = obj.showDetails
+
+        // obj.showDetails()
+        // newObject.bind(obj)()
+        newObject.bind(admin)()
+    </script>
+</body>
+</html>

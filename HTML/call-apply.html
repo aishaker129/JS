@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call-Apply</title>
+</head>
+<body>
+    
+    <h1>Call Apply in JavaScript</h1>
+
+    <script>
+
+        const users={
+            name:"Ai Shaker",
+            age: 24,
+            // userDetails:function(){
+            //     console.log("my name is "+this.name+" and age is "+this.age);
+            // }
+        }
+
+        const admin={
+            name:"Mahfuz Mia",
+            age: 26
+        }
+
+        // function userDetails(){
+        //         console.log("my name is "+this.name+" and age is "+this.age);
+        //     }
+
+        function userDetails(city,country){
+                console.log("my name is "+this.name+" and my age is "+this.age+" and my city is "+city+" and my country is "+country);
+            }
+
+        // users.userDetails()
+        // users.userDetails.call(admin)
+        // userDetails.call(admin)
+        // userDetails.apply(admin)
+        // userDetails.call(admin,"Dhaka","Bangladesh")
+        userDetails.apply(admin,["Dhaka","Bangladesh"]) // parameter pass should array other wise show error
+    </script>
+</body>
+</html>
