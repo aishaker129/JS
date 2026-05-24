@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Chaining</title>
+</head>
+
+<body>
+    <h1>Function Chaining in JavaScript</h1>
+
+    <script>
+
+        const data = {
+            number: 0,
+            add(a) {
+                this.number += a;
+                return this;
+            },
+            sub(a) {
+                this.number -= a;
+                return this;
+            },
+            mul(a) {
+                this.number *= a;
+                return this;
+            },
+            div(a) {
+                this.number /= a;
+                return this;
+            },
+            print() {
+                console.log(this.number);
+            }
+        }
+
+        data.add(100).sub(20).mul(2).div(10).print()
+    </script>
+</body>
+
+</html>

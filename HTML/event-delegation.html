@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+    <style>
+        #parent {
+            width: 300px;
+            height: 300px;
+            border: 2px solid brown;
+        }
+
+        .btn {
+            width: 80%;
+            height: 50px;
+            margin-top: 20px;
+            margin-left: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Event Delegation</h1>
+    <div onclick="handleParent(event)" id="parent">
+        <button class="btn">Button 1</button>
+        <button class="btn">Button 2</button>
+        <button class="btn">Button 3</button>
+    </div>
+
+    <script>
+        function handleParent(event) {
+            let btn = event.target.innerText;
+            if (event.target.classList.contains('btn')) {
+                // console.log(btn);
+
+                if (btn == "Button 1") {
+                    buttonOne();
+                }
+                else if (btn == "Button 2") {
+                    buttonTwo();
+                }
+                else if (btn == "Button 3") {
+                    buttonThree();
+                }
+            }
+
+        }
+
+        function buttonOne() {
+            console.log("Button 1 clicked");
+
+        }
+
+        function buttonTwo() {
+            console.log("Button 2 clicked");
+
+        }
+
+        function buttonThree() {
+            console.log("Button 3 clicked");
+
+        }
+    </script>
+</body>
+
+</html>
