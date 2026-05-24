@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gatter & Setter</title>
+</head>
+<body>
+    <h1>Gatter and Setter in JavaScript</h1>
+
+    <script>
+        const object = {
+            firstName : "AI",
+            lastName : "Shaker",
+
+            set setName(fullName){
+                const breakName = fullName.split(" ");
+                this.firstName = breakName[0];
+                this.lastName = breakName[1];
+            },
+            get getName(){
+                return "Hello, this is my name "+this.firstName+" "+this.lastName;
+            }
+        }
+
+        object.setName = "Mahfuz Mia";
+
+        console.log(object.getName);
+        
+    </script>
+</body>
+</html>
