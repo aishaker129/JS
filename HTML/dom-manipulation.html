@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Manipulation</title>
+</head>
+<body>
+    <h1 class="main one two" custom-data="this is custom data">Dom Manipulation in JavaScript</h1>
+    <button onclick="changeDom()">change dom</button>
+
+    <script>
+        let headingControl = document.querySelector('h1');
+        function changeDom(){
+            // console.log(headingControl.innerText);
+            // headingControl.innerText="Hello Dom";
+            // headingControl.style.color='green';
+            // headingControl.setAttribute('id','heading1');
+            // headingControl.classList.add('heading-style');
+            // headingControl.classList.toggle('two');
+            console.log(headingControl.getAttribute('custom-data'));
+            
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Selector</title>
+</head>
+
+<body>
+    <h1>Heading text 1</h1>
+    <h1>Heading text 2</h1>
+    <h1>Heading text 3</h1>
+    <h1>Heading text 4</h1>
+    <!-- <button onclick="change()">Change Heading</button> -->
+
+    <script>
+        // function change() {
+        //     let heading = document.querySelector('h1').innerText;
+        //     // console.log(heading);
+
+        //     if (heading == 'Heading text 1') {
+        //         document.querySelector('h1').innerHTML = "Hello World"
+        //     } else if (heading == 'Hello World') {
+        //         document.querySelector('h1').innerHTML = "Heding text 1"
+        //     }
+        // }
+
+        let headings = document.querySelectorAll('h1');
+        headings.forEach((item)=>{
+            console.log(item.innerText);
+            
+        })
+
+    </script>
+</body>
+
+</html>

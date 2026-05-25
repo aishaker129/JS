@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+</head>
+<body id="body">
+    <h1>Event Propagation in JavaScript</h1>
+
+    <div id="parent">
+        <button id="btn">click me</button>
+    </div>
+
+    <script>
+        // bubbling phase
+        // document.getElementById('btn').addEventListener('click',()=>{
+        //     console.log('btn clicked');
+            
+        // });
+        // document.getElementById('parent').addEventListener('click',()=>{
+        //     console.log('parent clicked');
+            
+        // });
+        // document.getElementById('body').addEventListener('click',()=>{
+        //     console.log('body clicked');
+            
+        // });
+
+        // document.getElementById('html').addEventListener('click',()=>{
+        //     console.log('html clicked');
+            
+        // })
+
+        // capturing phase
+
+        // document.getElementById('btn').addEventListener('click',()=>{
+        //     console.log('btn clicked');
+            
+        // });
+        // document.getElementById('parent').addEventListener('click',()=>{
+        //     console.log('parent clicked');
+            
+        // });
+        // document.getElementById('body').addEventListener('click',()=>{
+        //     console.log('body clicked');
+            
+        // });
+
+        // document.getElementById('html').addEventListener('click',()=>{
+        //     console.log('html clicked');
+            
+        // },true)
+
+        // target phase
+
+        document.getElementById('btn').addEventListener('click',(event)=>{
+            console.log('btn clicked');
+            // event.stopPropagation(); // bubbling phase
+            
+        });
+        document.getElementById('parent').addEventListener('click',()=>{
+            console.log('parent clicked');
+            
+        },true);
+        document.getElementById('body').addEventListener('click',()=>{
+            console.log('body clicked');
+            
+        },true);
+
+        document.getElementById('html').addEventListener('click',(event)=>{
+            console.log('html clicked');
+            event.stopPropagation();
+            
+        },true)
+
+    </script>
+</body>
+</html>

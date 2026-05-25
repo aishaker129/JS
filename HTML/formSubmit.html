@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submit</title>
+</head>
+<body>
+    <h1>Form Submit in JavaScript</h1>
+
+    <form id="userForm" action="">
+        <input onblur="checkValidation(event)" type="text" id="name" name="name" placeholder="enter name"><br>
+        <span id="name-error"></span><br>
+        <input type="email" id="email" name="email" placeholder="enter email"><br>
+        <span id="email-error"></span><br>
+        <input type="password" id="pass" name="password" placeholder="enter password"><br>
+        <span id="password-error"></span><br>
+        <input id="submit" type="submit" value="SignUp">
+    </form>
+
+    <ul id="list">
+
+    </ul>
+
+    <script>
+        let name = document.querySelector('#name');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#pass');
+
+
+
+        let submit = document.querySelector('#submit');
+        submit.disabled = true;
+
+        submit.addEventListener('click',(event)=>{
+            event.preventDefault();
+            // console.log('form submitted');
+            
+            let form = document.querySelector('#userForm');
+            let formData = new FormData(form);
+
+            let list = document.querySelector('#list');
+            list.innerHTML = "";
+            // formData.forEach((item)=>{
+            //     list.innerHTML += "<li>" + item+ "</li>";
+            // })
+
+            for(let value of formData.entries()){
+                list.innerHTML += "<li>" + value[1]+ "</li>";
+                
+            }
+            
+        });
+
+        name.addEventListener('input',handleInputValue);
+        email.addEventListener('input',handleInputValue);
+        password.addEventListener('input',handleInputValue);
+        
+        function handleInputValue(){
+            if(name.value && email.value && password.value){
+                submit.disabled = false;
+            }else{
+                submit.disabled = true;
+            }
+        }
+
+        
+
+        // function checkValidation(event){
+        //     // if(event.targate.length < 3 && event.targate.length > 15){
+        //     //     document.getElementById('#name-error').innerHTML = " Name must be 3 to 15 character";
+        //     // }
+        //     let value = event.target;
+        //     let nameError = document.querySelector('#name-error');
+        //     let emailError = document.querySelector('#email-error');
+        //     let passwordError = document.querySelector('#password-error');
+            
+            
+        //     console.log(value);
+            
+        // }
+    </script>
+</body>
+</html>
