@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    <h1 id="heading">Local Storage in JavaScript</h1>
+
+    <!-- <input type="text" id="user-name" placeholder="enter data">
+    <input type="submit" id="submit" value="show Data"> -->
+
+    <input type="text" id="task" placeholder="enter task name">
+    <button id="store">Store</button>
+    <button id="display">Display</button>
+    <button id="clear">Clear</button>
+
+
+    <script>
+
+        // let submitData = document.querySelector('#submit');
+
+        // submitData.addEventListener('click',handleShowData);
+
+        // function show(){
+        //     let localData = localStorage.getItem('user-name');
+        //     if(localData){
+        //         document.querySelector('#heading').innerHTML = localData;
+        //     }
+        // }
+
+        // show();
+
+        // function handleShowData(){
+        //     let data = document.querySelector('#user-name').value;
+        //     localStorage.setItem('user-name',data);
+        //     // console.log(data);
+
+        //     show();
+        // }
+
+        let store = document.querySelector('#store');
+        let display = document.querySelector('#display');
+        let clearData = document.querySelector('#clear');
+
+        store.addEventListener('click',storeData);
+        display.addEventListener('click',displayData);
+        clearData.addEventListener('click',cleardata);
+
+        function storeData(){
+            let data = document.querySelector('#task').value;
+            localStorage.setItem('task',data);
+        }
+
+        function displayData(){
+            let data = localStorage.getItem('task');
+            if(data){
+                document.querySelector('#heading').innerHTML = data;
+            }
+            
+        }
+        displayData();
+
+        function cleardata(){
+            localStorage.removeItem('task');
+            document.querySelector('#heading').innerHTML = "Local Storage in JavaScript";
+            displayData();
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #main {
+            width: 450px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #name,
+        #price {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        #name:focus,
+        #price:focus {
+            border-color: #4a90e2;
+        }
+
+        #add {
+            width: 100%;
+            padding: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #add:hover {
+            background: #1d4ed8;
+        }
+
+        #list {
+            list-style: none;
+        }
+
+        /* Each food item in one row */
+        #list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Food name and price */
+        #list li span {
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Button container */
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        .edit-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Food Shop</h1>
+    <div id="main">
+        <input type="text" id="name" placeholder="enter food name">
+        <input type="text" id="price" placeholder="enter price">
+        <button id="add">Add Food</button>
+
+        <ul id="list">
+
+        </ul>
+    </div>
+
+    <script>
+
+
+        let add = document.querySelector('#add');
+        add.addEventListener('click', addFood);
+
+        let localData = JSON.parse(localStorage.getItem('food'));
+        let food = localData ? localData : [];
+        editId = undefined;
+
+        displayFood();
+
+        function addFood() {
+            const name = document.querySelector('#name').value;
+            const price = document.querySelector('#price').value;
+            const id = Date.now();
+
+            if (!editId) {
+                const collection = { name, price, id };
+                food.push(collection);
+                alert("food added successfully");
+            } else {
+                food.map((item) => {
+                    if (item.id == editId) {
+                        item.name = name;
+                        item.price = price;
+                        return item
+                    }
+                })
+                clearData();
+                alert('food updated successfully');
+            }
+
+
+            localStorage.setItem('food', JSON.stringify(food));
+            displayFood();
+            clearData();
+        }
+
+
+        function displayFood() {
+            let list = document.querySelector('#list');
+            let collection = "";
+
+            for (const element of food) {
+                collection += `
+        <li>
+            <span>${element.name} - ৳${element.price}</span>
+
+            <div class="actions">
+                <button class="delete-btn"
+                    onclick="deleteFood(${element.id})">
+                    Delete
+                </button>
+
+                <button class="edit-btn"
+                    onclick="editFood(${element.id})">
+                    Edit
+                </button>
+            </div>
+        </li>`;
+            }
+
+            list.innerHTML = collection;
+        }
+
+        function deleteFood(id) {
+            food = food.filter((item) => item.id !== Number(id));
+            localStorage.setItem('food', JSON.stringify(food));
+            displayFood();
+        }
+
+        function editFood(id) {
+            selectedFood = food.find((item) => item.id == Number(id));
+            editId = id;
+            document.querySelector('#name').value = selectedFood.name;
+            document.querySelector('#price').value = selectedFood.price;
+            document.querySelector('#add').innerHTML = "Update Food";
+
+        }
+
+        function clearData() {
+            editId = undefined;
+            document.querySelector('#name').value = "";
+            document.querySelector('#price').value = "";
+            document.querySelector('#add').innerHTML = "Add Food";
+        }
+    </script>
+</body>
+
+</html>
