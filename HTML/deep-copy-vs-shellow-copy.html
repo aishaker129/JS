@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        // const obj = {
+        //     name: "aishaker"
+        // }
+
+        // const user = obj;
+        // user.name = "Mahfuz mia";
+
+        // shallow coppy
+
+        // const obj = {
+        //     name: "aishaker"
+        // }
+
+        // const user = Object.assign({},obj); // object assign shallow copy
+        // const user = {...obj}; // object destructuring shallow copy
+        // user.name = "Mahfuz mia";
+
+
+        // deep copy
+
+        // obj = {
+        //     name:"AiShaker",
+        //     address:{
+        //         city:'Dhaka',
+        //         country:'Bangladesh'
+        //     },
+        //     getAllData:()=>{ return ' return data'}
+        // }
+
+        // user = JSON.parse(JSON.stringify(obj))
+        // user.address.city = "Netrokona";
+        // console.log("Object is: ",obj);
+        // console.log("User is: ",user);// in deep copy function and date cann't resolve if resolve this than use lodash library.
+
+        obj = {
+            name:"AiShaker",
+            address:{
+                city:'Dhaka',
+                country:'Bangladesh'
+            },
+            getAllData:()=>{ return ' return data'}
+        }
+
+        user = _.cloneDeep(obj)
+        user.address.city = "Netrokona";
+        console.log("Object is: ",obj);
+        console.log("User is: ",user);
+         
+    </script>
+</body>
+</html>

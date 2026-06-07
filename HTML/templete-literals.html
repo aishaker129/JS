@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templete Literals</title>
+</head>
+<body>
+    <h1>Templete Literals is JS</h1>
+    <p></p>
+
+    <script>
+        let name = 'Ai Shaker';
+        // let str = `Hello my name is ${name} and my age is 24`;
+
+        function show(strings, value){
+            return strings[0] + value.toUpperCase();
+        }
+
+        document.querySelector('p').innerText = show`hello ${name}`;
+        console.log(show`hello ${name}`);
+        
+
+    </script>
+</body>
+</html>

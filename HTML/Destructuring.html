@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring in JS</title>
+</head>
+<body>
+    <h1>Destructuring in JavaScript</h1>
+
+    <script>
+        // const getUser = ()=>{return "Joy"};
+        // const users = ['Ai','Shaker','Mahfuz','Rifat',getUser];
+        // const [x1,x2,x3,x4,x5] = users;
+        // console.log(x5());
+        
+        // const user = {
+        //     name: 'Ai Shaker',
+        //     age: 24,
+        //     city: 'Dhaka',
+        //     getCountry:()=>{return "Bangladesh"}
+        // }
+
+        // const {name,getCountry,...other} = user;
+        // console.log(getCountry());
+
+        const useStateArray = ['value',(x)=>{return `the value is ${x}`}];
+        function useState(){
+            return useStateArray;
+        }
+        const [value,setValue] = useState();
+        console.log(setValue(1000));
+        
+        
+    </script>
+</body>
+</html>

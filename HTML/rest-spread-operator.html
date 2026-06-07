@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest vs Spread Operator</title>
+</head>
+<body>
+    <h1>Rest vs Spread Operator in JavaScript</h1>
+
+    <script>
+        // Rest Operator
+
+        // function sum(...numbers){
+        //     console.log(numbers);
+            
+        // }
+
+        // function sum(x1,x2,...numbers){
+        //     console.log(numbers);
+            
+        // }
+
+        // sum(1,2,3,4,5);
+
+        // const [x1,x2,...element] = ["Ai","Shaker","Mahfuz","Rifat"];
+        // console.log(element);
+        
+        // const {age,city,...data} = {
+        //     name:"AiShaker",
+        //     age:24,
+        //     city:'Dhaka',
+        //     emsil:'aishaker@test.com'
+        // }
+
+        // console.log(data);
+        
+        // Spread Operator
+
+        // let a = [1,3,5,7];
+        // let b = [2,4,6,8];
+        // let c = [...a,...b];
+
+        // console.log(c.sort());
+
+        const user={
+            name:'AiShaker',
+            age:24,
+            city:'Dhaka'
+        };
+
+        const address={
+            ...user,
+            road:1,
+            block:'G',
+            house:19,
+            sector:'Uttora'
+        }
+
+        // const userdata = {...user,...address};
+
+        console.log(address);
+        
+        
+        
+    </script>
+</body>
+</html>

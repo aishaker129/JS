@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optional chainning(?.) and nullish coalescing(??) in JavaScript</title>
+</head>
+<body>
+    
+    <h1>Optional chainning(?.) and nullish coalescing(??) in JavaScript</h1>
+
+    <script>
+
+        // Optional chaining
+
+        // const user = {
+        //     name:'AiShaker',
+        //     age:25,
+        //     email:'aishaker@test.com',
+        //     address:{
+        //         city:'Dhaka',
+        //         houseNo:1
+        //     }
+        // };
+
+        // delete user.address;
+        // console.log(user?.address?.city);
+
+        // let arr = [10,20,30,40];
+        // arr = null;
+        // console.log(arr?.[0]);
+
+        // nullish coalescing
+
+        let num = 0;
+        // console.log(num || 'not a valid number'); // output: not a valid number
+        console.log(num ?? 'not a valid number');  // output: 0
+        
+        
+        
+    </script>
+</body>
+</html>

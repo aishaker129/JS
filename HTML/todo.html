@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #main {
+            width: 450px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #title {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        #name:focus,
+        #price:focus {
+            border-color: #4a90e2;
+        }
+
+        #add {
+            width: 100%;
+            padding: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #complete {
+            width: 100%;
+            padding: 10px;
+            background: #05ce59;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #add:hover {
+            background: #1d4ed8;
+        }
+
+        #list {
+            list-style: none;
+        }
+
+        /* Each food item in one row */
+        #list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Food name and price */
+        #list li span {
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Button container */
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        .edit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        #done {
+            list-style: none;
+        }
+
+        /* Each food item in one row */
+        #done li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Food name and price */
+        #done li span {
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Todo List</h1>
+
+    <div id="main">
+        <input type="text" id="title" placeholder="enter topic title">
+        <button id="add">Add Topic</button>
+
+        <ul id="list">
+
+        </ul>
+        <button id="complete">Complete</button>
+        <ul id="done"></ul>
+    </div>
+
+    <script>
+        let add = document.querySelector('#add');
+        add.addEventListener('click', addTodo);
+
+        let localData = JSON.parse(localStorage.getItem('topics'));
+        let topics = localData ? localData : [];
+        editedId = undefined;
+        displayTodo();
+        clearData();
+
+        let marksList = JSON.parse(localStorage.getItem('marks'));
+        let marks = marksList ? marksList : [];
+        displayCompletedTopic();
+
+        function addTodo() {
+            const title = document.querySelector('#title').value;
+            const marks = false;
+            const id = Date.now();
+
+            if (!editedId) {
+                const collections = { title, marks, id };
+                topics.push(collections);
+                alert(`${title} added successfully`);
+            } else {
+                topics.map((item) => {
+                    if (item.id == editedId) {
+                        item.title = title;
+                        return item;
+                    }
+                })
+                clearData();
+                alert(`Topic updated successfully`)
+            }
+
+            localStorage.setItem('topics', JSON.stringify(topics))
+            displayTodo();
+            clearData();
+        }
+
+        function displayTodo() {
+            let list = document.querySelector('#list');
+            let collection = "";
+
+            for (const element of topics) {
+                collection += `
+        <li>
+            <span>${element.title}  </span>
+
+            <div class="actions">
+                <button class="delete-btn"
+                    onclick="marksTopic(${element.id})">
+                    Marks
+                </button>
+
+                <button class="edit-btn"
+                    onclick="editTopics(${element.id})">
+                    Edit
+                </button>
+            </div>
+        </li>`;
+            }
+
+            list.innerHTML = collection;
+        }
+
+        function marksTopic(id) {
+            markedTopic = topics.find((item)=> item.id == Number(id));
+
+            topics = topics.filter((item) => item.id !== Number(id));
+            localStorage.setItem('topics', JSON.stringify(topics));
+            displayTodo();
+
+            title = markedTopic.title;
+
+            const collection = { title, id };
+            marks.push(collection);
+
+            localStorage.setItem('marks', JSON.stringify(marks));
+            alert(`${title} completed!!`)
+            displayCompletedTopic();
+        }
+
+        function clearData() {
+            editedId = undefined;
+            document.querySelector('#title').value = "";
+            document.querySelector('#add').innerHTML = "Add Todo";
+        }
+
+        function editTopics(id) {
+            selectedTopic = topics.find((item) => item.id == Number(id));
+            editedId = id;
+            document.querySelector('#title').value = selectedTopic.title;
+            document.querySelector('#add').innerHTML = "Update Topic";
+            
+        }
+
+        function displayCompletedTopic() {
+            let list = document.querySelector('#done');
+            let collection = "";
+
+            for (const element of marks) {
+                collection += `
+        <li>
+            <span>${element.title}  </span>
+        </li>`;
+            }
+
+            list.innerHTML = collection;
+        }
+    </script>
+</body>
+
+</html>

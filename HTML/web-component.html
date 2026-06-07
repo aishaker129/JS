@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Component</title>
+
+</head>
+
+<body>
+    <h1>Web Compenent in JavaScript</h1>
+    <custom-element name="Name" id="name"></custom-element>
+    <custom-element name="Username" id="username"></custom-element>
+    <custom-element name="Email" id="email"></custom-element>
+    <custom-element name="Phone" id="phone"></custom-element>
+    <button onclick="getAccess()">Access</button>
+
+
+    <script>
+        class CustomComponent extends HTMLElement {
+            connectedCallback() {
+                const name = this.getAttribute("name");
+                const id = this.getAttribute("id");
+                const shadow = this.attachShadow({ mode: "open" });  // if shadow mode are on than access the data outside otherwise does not access data
+
+                shadow.innerHTML = `
+                <style>
+                    label{
+                        color: red;
+                        font-weight: bold;
+                    }
+                </style>
+                <label for=${id}>${name}</lable>
+                    <input type="text" id=${id} placeholder="enter ${name}" /> </br> </br>`
+            }
+
+        }
+
+        customElements.define("custom-element", CustomComponent);
+
+        function getAccess(){
+            const element = document.querySelector('#email');
+            const input = element.shadowRoot.querySelector('#email');
+            console.log(input.value);
+            
+        }
+    </script>
+</body>
+
+</html>

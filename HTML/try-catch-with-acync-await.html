@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try-Catch with Async/Await</title>
+</head>
+<body>
+    <h1>Try-Catch with Async/Await</h1>
+
+    <script>
+        async function apiCall(){
+            try{
+                const url = "https://jsonplaceholder.typicode.com/posts/1";
+                let response = await fetch(url);
+                let jsonData = await response.json();
+                console.log(jsonData);
+                alert('FirstData fetched successfully!');
+            }
+            catch(error){
+                console.log('Error:', error);
+                alert('Error occurred while fetching data.');
+            }
+            
+            try{
+                const url1 = "https://jsonplaceholder.typicode.com/posts";
+                let response1 = await fetch(url1);
+                let jsonData1 = await response1.json();
+                console.log(jsonData1);
+                alert('Second Data fetched successfully!');
+            }
+            catch(error){
+                console.log('Error:', error);
+                alert('Error occurred while fetching data.');
+            }finally{
+                console.log('API call completed.');
+            }
+        }
+
+        apiCall();
+    </script>
+
+</body>
+</html>
