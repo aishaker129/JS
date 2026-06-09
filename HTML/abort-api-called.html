@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abort Api Call</title>
+</head>
+<body>
+    <h1>Abort Api Call in JavaScript</h1>
+
+    <button onclick="apiCall()">Api Call</button>
+
+    <script>
+        const controller = new AbortController();
+        const apiSignal = controller.signal;
+
+        async function apiCall() {
+            setTimeout(()=>{
+                abortApiCall();
+            },1000);
+
+            try {
+                const url = "https://jsonplaceholder.typicode.com/posts";
+                let response = await fetch(url,{
+                    signal:apiSignal
+                });
+
+                response = await response.json();
+
+                console.log(response);
+                
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        function abortApiCall(){
+            controller.abort();
+        }
+    </script>
+</body>
+</html>

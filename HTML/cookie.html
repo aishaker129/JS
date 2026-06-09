@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie</title>
+</head>
+<body>
+    <h1>Cookie in JavaScript</h1>
+    <button onclick="setTheme('dark')">Dark Theme</button>
+    <button onclick="setTheme('light')">Light Theme</button>
+    <button onclick="display()">Display</button>
+    <button onclick="expireCookie()">Expiry Date</button>
+    <button onclick="clearCookie()">Clear Cookie</button>
+    
+
+    <h2></h2>
+    <h3></h3>
+
+    <script>
+        
+        function display(){
+            document.querySelector('h2').innerText = "Cookie ="+document.cookie;
+            
+        }
+
+        function expireCookie(){
+            let date = new Date();
+            date.setDate(date.getDate()+ 1);
+            document.cookie = `name=shaker;expires=${date.toUTCString()}`;
+            document.querySelector('h3').innerText='Expiriy date '+date
+        }
+
+        function clearCookie(){
+            document.cookie = `name=shaker;expires=sun, 08 jun 2026 00:00:00 UTC`;
+
+        }
+
+        function setTheme(theme){
+            
+            document.cookie ="theme="+theme;
+            handleTheme();
+        }
+        
+        function handleTheme(){
+            if(document.cookie.includes("theme=dark")){
+                document.body.style.backgroundColor='black';
+                document.body.style.color='white';
+            }else{
+                document.body.style.backgroundColor='white';
+                document.body.style.color='black';
+            }
+        }
+
+        handleTheme();
+    </script>
+</body>
+</html>
